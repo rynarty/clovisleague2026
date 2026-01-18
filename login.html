@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login & Cadastro – Liga Clóvis 2026</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #222, #000);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: rgba(255,255,255,0.05);
+      padding: 30px;
+      border-radius: 20px;
+      width: 320px;
+      box-shadow: 0 0 25px rgba(255,215,0,0.4);
+      text-align: center;
+    }
+
+    h2 {
+      color: #ffd700;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 15px;
+      border: none;
+      background: #ffd700;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ffea00;
+    }
+
+    .switch {
+      margin-top: 15px;
+      font-size: 0.9em;
+      cursor: pointer;
+      color: #ffd700;
+    }
+
+    a {
+      color: #ffd700;
+      text-decoration: none;
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box" id="loginBox">
+    <h2>🔐 Login</h2>
+    <input type="text" id="loginUser" placeholder="Usuário" />
+    <input type="password" id="loginPass" placeholder="Senha" />
+    <button onclick="login()">Entrar</button>
+    <div class="switch" onclick="mostrarCadastro()">Criar conta</div>
+    <a href="index.html">⬅ Voltar</a>
+  </div>
+
+  <div class="box" id="registerBox" style="display:none;">
+    <h2>📝 Cadastro</h2>
+    <input type="text" id="regUser" placeholder="Usuário" />
+    <input type="password" id="regPass" placeholder="Senha" />
+    <button onclick="cadastrar()">Cadastrar</button>
+    <div class="switch" onclick="mostrarLogin()">Já tenho conta</div>
+  </div>
+
+  <script>
+    function mostrarCadastro() {
+      document.getElementById('loginBox').style.display = 'none';
+      document.getElementById('registerBox').style.display = 'block';
+    }
+
+    function mostrarLogin() {
+      document.getElementById('registerBox').style.display = 'none';
+      document.getElementById('loginBox').style.display = 'block';
+    }
+
+    function cadastrar() {
+      const user = regUser.value;
+      const pass = regPass.value;
+
+      if (!user || !pass) return alert('Preencha tudo!');
+
+      localStorage.setItem('user_' + user, pass);
+      alert('Cadastro realizado!');
+      mostrarLogin();
+    }
+
+    function login() {
+      const user = loginUser.value;
+      const pass = loginPass.value;
+      const saved = localStorage.getItem('user_' + user);
+
+      if (saved === pass) {
+        alert('Login bem-sucedido!');
+        localStorage.setItem('logado', user);
+      } else {
+        alert('Usuário ou senha incorretos');
+      }
+    }
+  </script>
+
+</body>
+</html>

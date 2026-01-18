@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Atendimento – Liga Clóvis 2026</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #111, #000);
+      color: #fff;
+    }
+
+    header {
+      background: #000;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    }
+
+    header h1 {
+      color: #ffd700;
+      margin: 0;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding: 30px;
+      border-radius: 20px;
+      width: 360px;
+      box-shadow: 0 0 25px rgba(255,215,0,0.4);
+      text-align: center;
+    }
+
+    h2 {
+      color: #ffd700;
+      margin-bottom: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border: none;
+      resize: none;
+    }
+
+    textarea {
+      height: 100px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 15px;
+      border: none;
+      background: #ffd700;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ffea00;
+    }
+
+    a {
+      display: block;
+      margin-top: 15px;
+      color: #ffd700;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>📨 Atendimento ao Cliente</h1>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Fale com a Liga</h2>
+      <input type="text" id="nome" placeholder="Seu nome" />
+      <input type="email" id="email" placeholder="Seu e-mail" />
+      <textarea id="mensagem" placeholder="Digite sua mensagem"></textarea>
+      <button onclick="enviarMensagem()">Enviar mensagem</button>
+      <a href="index.html">⬅ Voltar para o início</a>
+    </div>
+  </main>
+
+  <script>
+    function enviarMensagem() {
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      const mensagem = document.getElementById('mensagem').value;
+
+      if (!nome || !email || !mensagem) {
+        alert('Preencha todos os campos!');
+        return;
+      }
+
+      const mensagens = JSON.parse(localStorage.getItem('mensagens')) || [];
+
+      mensagens.push({
+        nome,
+        email,
+        mensagem,
+        data: new Date().toLocaleString()
+      });
+
+      localStorage.setItem('mensagens', JSON.stringify(mensagens));
+
+      alert('Mensagem enviada com sucesso! ⚡');
+
+      document.getElementById('nome').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('mensagem').value = '';
+    }
+  </script>
+
+</body>
+</html>

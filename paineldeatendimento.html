@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Painel dos Atendentes – Liga Clóvis 2026</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #000, #111);
+      color: #fff;
+    }
+
+    header {
+      background: #000;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    }
+
+    header h1 {
+      color: #ffd700;
+      margin: 0;
+    }
+
+    main {
+      padding: 30px 15px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .msg {
+      background: rgba(255,255,255,0.05);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 15px rgba(255,215,0,0.3);
+    }
+
+    .msg h3 {
+      margin: 0 0 5px 0;
+      color: #ffd700;
+    }
+
+    .msg small {
+      color: #ccc;
+    }
+
+    textarea {
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: none;
+      padding: 10px;
+      resize: none;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      border-radius: 15px;
+      border: none;
+      background: #ffd700;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ffea00;
+    }
+
+    .resolvido {
+      background: rgba(0,255,0,0.1);
+      border: 2px solid #00ff00;
+    }
+
+    a {
+      color: #ffd700;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎧 Painel dos Atendentes</h1>
+  </header>
+
+  <main id="listaMensagens"></main>
+
+  <script>
+    const container = document.getElementById('listaMensagens');
+    const mensagens = JSON.parse(localStorage.getItem('mensagens')) || [];
+
+    if (mensagens.length === 0) {
+      container.innerHTML = '<p>Nenhuma mensagem recebida ainda.</p>';
+    }
+
+    mensagens.forEach((msg, index) => {
+      const div = document.createElement('div');
+      div.className = 'msg';
+
+      div.innerHTML = `
+        <h3>${msg.nome} (${msg.email})</h3>
+        <small>${msg.data}</small>
+        <p>${msg.mensagem}</p>
+        <textarea placeholder="Resposta ao cliente..."></textarea>
+        <button onclick="marcarResolvido(${index})">Marcar como resolvido</button>
+      `;
+
+      container.appendChild(div);
+    });
+
+    function marcarResolvido(i) {
+      const cards = document.getElementsByClassName('msg');
+      cards[i].classList.add('resolvido');
+      alert('Atendimento marcado como resolvido!');
+    }
+  </script>
+
+</body>
+</html>

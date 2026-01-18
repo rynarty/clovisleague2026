@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Painel do Administrador – Liga Clóvis 2026</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #1a1a1a, #000);
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #000;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(255,215,0,0.5);
+    }
+
+    header h1 {
+      color: #ffd700;
+      margin: 0;
+    }
+
+    main {
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .box {
+      background: rgba(255,255,255,0.05);
+      padding: 25px;
+      border-radius: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 0 20px rgba(255,215,0,0.3);
+    }
+
+    h2 {
+      color: #ffd700;
+      margin-bottom: 15px;
+    }
+
+    input, button {
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      margin: 5px 0;
+    }
+
+    input {
+      width: 100%;
+    }
+
+    button {
+      background: #ffd700;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ffea00;
+    }
+
+    .jogador {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.6);
+      padding: 10px 15px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .jogador span {
+      font-weight: bold;
+    }
+
+    .remove {
+      background: crimson;
+      color: white;
+    }
+
+    .remove:hover {
+      background: darkred;
+    }
+
+    .logout {
+      background: #444;
+      color: #fff;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>👑 Painel do Administrador</h1>
+  <p>Controle oficial do placar da Liga Clóvis Pokémon 2026</p>
+</header>
+
+<main id="conteudo">
+  <!-- Conteúdo aparece via JS -->
+</main>
+
+<div>
+  <h2>TAG dos Jogadores</h2>
+  <div id="listaUsuarios"></div>
+</div>
+
+
+<script>
+  const ADMIN_USER = 'admin';
+  const ADMIN_PASS = 'clovis2026';
+
+  function telaLoginAdmin() {
+    document.getElementById('conteudo').innerHTML = `
+      <div class="box">
+        <h2>🔐 Login do Administrador</h2>
+        <input id="adminUser" placeholder="Usuário admin" />
+        <input id="adminPass" type="password" placeholder="Senha" />
+        <button onclick="loginAdmin()">Entrar</button>
+      </div>
+    `;
+  }
+
+  function loginAdmin() {
+    const u = adminUser.value;
+    const p = adminPass.value;
+
+    if (u === ADMIN_USER && p === ADMIN_PASS) {
+      localStorage.setItem('adminLogado', 'true');
+      carregarPainel();
+    } else {
+      alert('Credenciais inválidas');
+    }
+  }
+
+  function carregarPainel() {
+    document.getElementById('conteudo').innerHTML = `
+      <div class="box">
+        <h2>➕ Adicionar Jogador ao Placar</h2>
+        <input id="nomeJogador" placeholder="Nome do jogador" />
+        <input id="insigniasJogador" type="number" placeholder="Insígnias" value="0" />
+        <button onclick="adicionarJogador()">Adicionar</button>
+      </div>
+
+      <div class="box">
+        <h2>🏆 Jogadores no Placar</h2>
+        <div id="listaJogadores"></div>
+      </div>
+
+      <button class="logout" onclick="logoutAdmin()">Sair</button>
+    `;
+
+    renderizarJogadores();
+  }
+
+  function obterPlacar() {
+    return JSON.parse(localStorage.getItem('placar')) || [];
+  }
+
+  function salvarPlacar(placar) {
+    localStorage.setItem('placar', JSON.stringify(placar));
+  }
+
+  function adicionarJogador() {
+    const nome = nomeJogador.value.trim();
+    const insignias = parseInt(insigniasJogador.value);
+
+    if (!nome) return alert('Digite o nome do jogador');
+
+    const placar = obterPlacar();
+    placar.push({ nome, insignias });
+    salvarPlacar(placar);
+
+    nomeJogador.value = '';
+    insigniasJogador.value = 0;
+
+    renderizarJogadores();
+  }
+
+  function removerJogador(index) {
+    const placar = obterPlacar();
+    placar.splice(index, 1);
+    salvarPlacar(placar);
+    renderizarJogadores();
+  }
+
+  function renderizarJogadores() {
+    const lista = document.getElementById('listaJogadores');
+    const placar = obterPlacar();
+
+    lista.innerHTML = '';
+
+    placar.forEach((j, i) => {
+      const div = document.createElement('div');
+      div.className = 'jogador';
+      div.innerHTML = `
+        <span>${j.nome} — 🏅 ${j.insignias}</span>
+        <button class="remove" onclick="removerJogador(${i})">Remover</button>
+      `;
+      lista.appendChild(div);
+    });
+  }
+
+  function logoutAdmin() {
+    localStorage.removeItem('adminLogado');
+    telaLoginAdmin();
+  }
+
+  if (localStorage.getItem('adminLogado') === 'true') {
+    carregarPainel();
+  } else {
+    telaLoginAdmin();
+  }
+
+  
+</script>
+
+</body>
+</html>

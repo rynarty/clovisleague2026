@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chat Geral – Liga Clóvis Pokémon 2026</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #111, #000);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background: #000;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(255,215,0,0.5);
+    }
+
+    header h1 {
+      color: #ffd700;
+      margin: 0;
+    }
+
+    #chat {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .msg {
+      background: rgba(255,255,255,0.05);
+      padding: 10px 15px;
+      border-radius: 15px;
+      margin-bottom: 10px;
+    }
+
+    .user {
+      font-weight: bold;
+      color: #ffd700;
+    }
+
+    footer {
+      display: flex;
+      padding: 15px;
+      background: #000;
+      gap: 10px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      background: #ffd700;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ffea00;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>💬 Chat Geral</h1>
+  <p>Liga Clóvis Pokémon 2026</p>
+</header>
+
+<div id="chat"></div>
+
+<footer>
+  <input id="mensagem" placeholder="Digite sua mensagem..." />
+  <button onclick="enviarMensagem()">Enviar</button>
+</footer>
+
+<script>
+  const usuario = localStorage.getItem('logado');
+  if (!usuario) {
+    alert('Você precisa estar logado para usar o chat');
+    window.location.href = 'login.html';
+  }
+
+  function obterChat() {
+    return JSON.parse(localStorage.getItem('chatGeral')) || [];
+  }
+
+  function salvarChat(chat) {
+    localStorage.setItem('chatGeral', JSON.stringify(chat));
+  }
+
+  function renderizarChat() {
+    const chat = obterChat();
+    const div = document.getElementById('chat');
+    div.innerHTML = '';
+
+    chat.forEach(m => {
+      const msg = document.createElement('div');
+      msg.className = 'msg';
+      msg.innerHTML = `<span class="user">${m.user}:</span> ${m.texto}`;
+      div.appendChild(msg);
+    });
+
+    div.scrollTop = div.scrollHeight;
+  }
+
+  function enviarMensagem() {
+    const texto = mensagem.value.trim();
+    if (!texto) return;
+
+    const chat = obterChat();
+    chat.push({ user: usuario, texto, data: Date.now() });
+    salvarChat(chat);
+
+    mensagem.value = '';
+    renderizarChat();
+  }
+
+  renderizarChat();
+  setInterval(renderizarChat, 1500);
+</script>
+
+</body>
+</html>

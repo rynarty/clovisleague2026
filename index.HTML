@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>LIGA CLÓVIS POKEMON 2026</title>
+  <style>
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #ffd700, #111);
+      color: #fff;
+      text-align: center;
+    }
+
+    header {
+      background: #000;
+      padding: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    }
+
+    header h1 {
+      margin: 0;
+      color: #ffd700;
+      text-shadow: 0 0 10px #ffeb3b;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    .container {
+      padding: 40px 20px;
+    }
+
+    .countdown h2 {
+      margin-bottom: 20px;
+    }
+
+    #timer {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 1.5em;
+    }
+
+    #timer div {
+      background: rgba(0,0,0,0.6);
+      padding: 15px 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255,215,0,0.6);
+      animation: pulse 1.5s infinite alternate;
+    }
+
+    #timer span {
+      font-size: 2em;
+      display: block;
+      color: #ffd700;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+
+    .mareep {
+      margin-top: 50px;
+    }
+
+    .mareep img {
+      width: 120px;
+      animation: bounce 1.2s infinite;
+      cursor: pointer;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    footer {
+      background: #000;
+      padding: 10px;
+      margin-top: 50px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>⚡ LIGA CLÓVIS POKEMON 2026 ⚡</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="placar.html">Placar</a>
+      <a href="atendimento.html">Transmissão</a>
+      <a href="#">Jogadores</a>
+      <a href="atendimento.html">Atendimento</a>
+      <a href="login.html">Login</a>
+      <a href="chat.html">Chat</a>
+    </nav>
+  </header>
+<h2 id="boasVindas" style="margin-bottom:20px;"></h2>
+
+  <main class="container">
+    <section class="countdown">
+      <h2>⏳ Contagem regressiva para a Liga</h2>
+      <div id="timer">
+        <div><span id="dias">00</span>Dias</div>
+        <div><span id="horas">00</span>Horas</div>
+        <div><span id="minutos">00</span>Min</div>
+        <div><span id="segundos">00</span>Seg</div>
+      </div>
+    </section>
+
+    <section class="mareep">
+      <a href="https://ligaclvispokemon2026.straw.page/" target="_blank">
+        <img src="mareep.png" alt="Mareep" />
+      </a>
+      <p>Maareeeep!</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>©LIGA CLÓVIS POKEMON 2026 x TX STUDIOS</p>
+  </footer>
+
+  <script>
+    const dataLiga = new Date('2026-06-10T15:00:00').getTime();
+
+    setInterval(() => {
+      const agora = new Date().getTime();
+      const diff = dataLiga - agora;
+
+      if (diff <= 0) return;
+
+      const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('dias').innerText = dias;
+      document.getElementById('horas').innerText = horas;
+      document.getElementById('minutos').innerText = minutos;
+      document.getElementById('segundos').innerText = segundos;
+    }, 1000);
+
+
+
+  const usuarioLogado = localStorage.getItem('logado');
+
+  if (usuarioLogado) {
+    document.getElementById('boasVindas').innerText =
+      `Olá ${usuarioLogado}, bem-vindo de volta, seus pokémons estavão te esperando!! ⚡🐑`;
+  } else {
+    document.getElementById('boasVindas').innerText =
+      'Olá treinador! Faça login para aproveitar a liga.';
+  }
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
