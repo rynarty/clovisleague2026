@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competidores – Liga Clóvis Pokémon 2026</title>
+
+  <style>
+
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #111, #000);
+      color: #fff;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffd700;
+      margin-bottom: 30px;
+    }
+
+    /* Container geral */
+    .lista-competidores {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Card do jogador */
+    .competidor-Vini{
+    background-image: url("render-fogo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  gap: 20px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.25);
+  position: relative;
+    }
+
+    .competidor-Ryan{
+    background-image: url("render-eletric.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  gap: 20px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.25);
+  position: relative;
+    }
+
+  .competidor-Pedro{
+  background-image: url("render-psiquatico.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  gap: 20px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.25);
+  position: relative;
+    }
+
+ .competidor-fuly{
+  background-image: url("render-psiquico.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  gap: 20px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.25);
+  position: relative;
+    }
+
+    .competidor-molina{
+  background-image: url("render-psiquico.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  gap: 20px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.25);
+  position: relative;
+    }
+
+      .competidor-ashley{
+  background-image: url("render-psiquico.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  gap: 20px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.25);
+  position: relative;
+    }
+
+    .competidor-Angelo{
+  background-image: url("render-dark.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  gap: 20px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.25);
+  position: relative;
+    }
+
+    .competidor-Daniel{
+  background-image: url("render-dark.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  gap: 20px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.25);
+  position: relative;
+    }
+
+   .competidor-Nicolas{
+  background-image: url("render-darksquic.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 120px 1fr 120px;
+  gap: 20px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.25);
+  position: relative;
+    }
+
+    /* Foto do jogador */
+    .foto-jogador img {
+      width: 120px;
+      height: 120px;
+      border-radius: 15px;
+      object-fit: cover;
+      background: #222;
+    }
+
+    /* Info principal */
+    .info h2 {
+      margin: 0;
+      color: #ffd700;
+    }
+
+    .info p {
+      margin: 8px 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    /* Estatísticas */
+    .stats {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      background: rgba(0,0,0,0.4);
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+    }
+
+    /* Insígnias */
+    .insignias {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .insignia {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #ccc;
+      overflow: hidden;
+    }
+
+    .insignia img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Pokémon favorito */
+    .pokemon {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+    }
+
+    .pokemon img {
+      width: 80px;
+      height: 80px;
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .competidor {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .foto-jogador img {
+        margin: 0 auto;
+      }
+
+      .pokemon {
+        position: static;
+        margin-top: 10px;
+      }
+    }
+
+</style>
+</head>
+
+<body>
+
+  </style>
+
+</head>
+
+<body>
+
+<h1>🏆 Competidores da Liga</h1>
+
+<div class="lista-competidores">
+
+  <!-- JOGADOR 1 -->
+  <div class="competidor-Vini">
+    <div class="foto-jogador">
+      <img src="jogador1.jpg" alt="Foto do Jogador">
+    </div>
+
+    <div class="info">
+      <h2>Vinicius</h2>
+      <p>tipo do deck: Fogo.</p>
+      <p>tempo no TCG: 7 anos</p>
+      <p>nivel do deck: 3</p>
+
+      <div class="stats">
+        <div class="stat">🏅 Insígnias: 0</div>
+        <div class="stat">✅ Vitórias: 0</div>
+        <div class="stat">❌ Derrotas: 0</div>
+        <div class="stat">📊 Posição: ?º</div>
+      </div>
+
+      <div class="insignias">
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+      </div>
+    </div>
+
+    <div class="pokemon">
+      <img src="https://art.pixilart.com/1cb6f8158203535.png" alt="Pokémon Favorito">
+    </div>
+  </div>
+
+  <!-- NOVOS JOGADORES NESSE BLOCO -->
+
+ <div class="competidor-Ryan">
+    <div class="foto-jogador">
+      <img src="https://i.pinimg.com/736x/94/38/90/9438906910c067d7f9931e6563bdc433.jpg" alt="Foto do Jogador">
+    </div>
+
+    <div class="info">
+      <h2>🍀Rynarty⚡</h2>
+      <p>tipo do deck: eletrico.</p>
+      <p>tempo no TCG: 6 anos</p>
+      <p>nivel do deck: 2</p>
+
+      <div class="stats">
+        <div class="stat">🏅 Insígnias: 0</div>
+        <div class="stat">✅ Vitórias: 0</div>
+        <div class="stat">❌ Derrotas: 0</div>
+        <div class="stat">📊 Posição: ?º</div>
+      </div>
+
+      <div class="insignias">
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+      </div>
+    </div>
+
+    <div class="pokemon">
+      <img src="https://phoenixdex.alteredorigin.net/images/pseudosprites/mareep.png" alt="Pokémon Favorito">
+    </div>
+  </div>
+
+    <div class="competidor-Pedro">
+    <div class="foto-jogador">
+      <img src="Pedro-mestre-pokemon.jpeg" alt="Foto do Jogador">
+    </div>
+
+    <div class="info">
+      <h2>Pedro</h2>
+      <p>tipo do deck: Água e psiquico.</p>
+      <p>tempo no TCG: 1 anos</p>
+      <p>nivel do deck: 1</p>
+
+      <div class="stats">
+        <div class="stat">🏅 Insígnias: 0</div>
+        <div class="stat">✅ Vitórias: 0</div>
+        <div class="stat">❌ Derrotas: 0</div>
+        <div class="stat">📊 Posição: ?º</div>
+      </div>
+
+      <div class="insignias">
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+      </div>
+    </div>
+
+    <div class="pokemon">
+      <img src="https://art.pixilart.com/sr2a3bcdc238547.png" alt="Pokémon Favorito">
+    </div>
+  </div>
+
+<div class="competidor-fuly">
+    <div class="foto-jogador">
+      <img src="jogador3.jpg" alt="Foto do Jogador">
+    </div>
+
+    <div class="info">
+      <h2>Arthur fuly</h2>
+      <p>tipo do deck: psiquico.</p>
+      <p>tempo no TCG: 1 ano</p>
+      <p>nivel do deck:3</p>
+
+      <div class="stats">
+        <div class="stat">🏅 Insígnias: 0</div>
+        <div class="stat">✅ Vitórias: 0</div>
+        <div class="stat">❌ Derrotas: 0</div>
+        <div class="stat">📊 Posição: ?º</div>
+      </div>
+
+      <div class="insignias">
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+      </div>
+    </div>
+
+    <div class="pokemon">
+      <img src="https://art.pixilart.com/6cf71f92a66c753.png" alt="Pokémon Favorito">
+    </div>
+  </div>
+
+<div class="competidor-molina">
+    <div class="foto-jogador">
+      <img src="mimikyu-barrigudo.jpeg" alt="Foto do Jogador">
+    </div>
+
+    <div class="info">
+      <h2>Davi Molina</h2>
+      <p>tipo do deck: psiquico.</p>
+      <p>tempo no TCG: 4 meses</p>
+      <p>nivel do deck:1</p>
+
+      <div class="stats">
+        <div class="stat">🏅 Insígnias: 0</div>
+        <div class="stat">✅ Vitórias: 0</div>
+        <div class="stat">❌ Derrotas: 0</div>
+        <div class="stat">📊 Posição: ?º</div>
+      </div>
+
+      <div class="insignias">
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+      </div>
+    </div>
+
+    <div class="pokemon">
+      <img src="https://www.shatteredlight.wiki/assets/images/pokemon/front/MIMIKYU.png " alt="Pokémon Favorito">
+    </div>
+  </div>
+
+
+<div class="competidor-ashley">
+    <div class="foto-jogador">
+      <img src="" alt="Foto do Jogador">
+    </div>
+
+    <div class="info">
+      <h2>LeyBoo</h2>
+      <p>tipo do deck: psiquico.</p>
+      <p>tempo no TCG: 9 meses</p>
+      <p>nivel do deck:3</p>
+
+      <div class="stats">
+        <div class="stat">🏅 Insígnias: 0</div>
+        <div class="stat">✅ Vitórias: 0</div>
+        <div class="stat">❌ Derrotas: 0</div>
+        <div class="stat">📊 Posição: ?º</div>
+      </div>
+
+      <div class="insignias">
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+      </div>
+    </div>
+
+    <div class="pokemon">
+      <img src="https://img.pokemondb.net/sprites/sword-shield/normal/gardevoir.png" alt="Pokémon Favorito">
+    </div>
+  </div>
+
+  <div class="competidor-Nicolas">
+    <div class="foto-jogador">
+      <img src="https://wallpapers.com/images/hd/pokemon-hydreigon-with-dark-energy-balls-u0pmyk3e34onh14n.jpg" alt="Foto do Jogador">
+    </div>
+
+    <div class="info">
+      <h2>Nicolas</h2>
+      <p>tipo do deck: dark.</p>
+      <p>tempo no TCG: 7 anos</p>
+      <p>nivel do deck: 3</p>
+
+      <div class="stats">
+        <div class="stat">🏅 Insígnias: 0</div>
+        <div class="stat">✅ Vitórias: 0</div>
+        <div class="stat">❌ Derrotas: 0</div>
+        <div class="stat">📊 Posição: ?º</div>
+      </div>
+
+      <div class="insignias">
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+      </div>
+    </div>
+
+    <div class="pokemon">
+      <img src="https://img.pokemondb.net/sprites/black-white/normal/hydreigon.png" alt="Pokémon Favorito">
+  </div>
+    </div>
+
+<div class="competidor-Angelo">
+    <div class="foto-jogador">
+      <img src="kleber pofile.jfif" alt="Foto do Jogador">
+    </div>
+
+    <div class="info">
+      <h2>Rato</h2>
+      <p>tipo do deck: dark.</p>
+      <p>tempo no TCG: 5 meses</p>
+      <p>nivel do deck: 1</p>
+
+      <div class="stats">
+        <div class="stat">🏅 Insígnias: 0</div>
+        <div class="stat">✅ Vitórias: 0</div>
+        <div class="stat">❌ Derrotas: 0</div>
+        <div class="stat">📊 Posição: ?º</div>
+      </div>
+
+      <div class="insignias">
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+      </div>
+    </div>
+
+    <div class="pokemon">
+      <img src="https://www.pngkit.com/png/full/357-3570355_pixel-people-gengar-sprite.png" alt="Pokémon Favorito">
+  </div>
+    </div>
+
+<div class="competidor-Daniel">
+    <div class="foto-jogador">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKw7suebIlsSPewW63wJtQwpK6vz6mGyi6EQ&s" alt="Foto do Jogador">
+    </div>
+
+    <div class="info">
+      <h2>Daniel</h2>
+      <p>tipo do deck: dark.</p>
+      <p>tempo no TCG: 6 meses</p>
+      <p>nivel do deck: 2</p>
+
+      <div class="stats">
+        <div class="stat">🏅 Insígnias: 0</div>
+        <div class="stat">✅ Vitórias: 0</div>
+        <div class="stat">❌ Derrotas: 0</div>
+        <div class="stat">📊 Posição: ?º</div>
+      </div>
+
+      <div class="insignias">
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+        <div class="insignia"></div>
+      </div>
+    </div>
+
+    <div class="pokemon">
+      <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d2e0b7c1-448b-4dac-97fe-a08b119ac01d/dda4r4m-ee8858a3-b031-413b-b5c7-5539187a7235.png/v1/fill/w_400,h_534,strp/corviknight_sprite_by_mrcucumber7511_dda4r4m-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2QyZTBiN2MxLTQ0OGItNGRhYy05N2ZlLWEwOGIxMTlhYzAxZFwvZGRhNHI0bS1lZTg4NThhMy1iMDMxLTQxM2ItYjVjNy01NTM5MTg3YTcyMzUucG5nIiwiaGVpZ2h0IjoiPD01MzQiLCJ3aWR0aCI6Ijw9NDAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLndhdGVybWFyayJdLCJ3bWsiOnsicGF0aCI6Ilwvd21cL2QyZTBiN2MxLTQ0OGItNGRhYy05N2ZlLWEwOGIxMTlhYzAxZFwvbXJjdWN1bWJlcjc1MTEtNC5wbmciLCJvcGFjaXR5Ijo5NSwicHJvcG9ydGlvbnMiOjAuNDUsImdyYXZpdHkiOiJjZW50ZXIifX0.9FW-8ZOAYmw4mtg5T0kRBGtkOeuFlvVT1gf9blqAswQ" alt="Pokémon Favorito">
+  </div>
+    </div>
+
+
+  </div>
+
+
+</body>
+</html>
