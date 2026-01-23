@@ -93,6 +93,26 @@
       50% { transform: translateY(-15px); }
     }
 
+    .perfil-topo {
+  position: absolute;
+  top: 110px; /* ajusta se seu header for maior */
+  right: 20px;
+  z-index: 1000;
+}
+
+.perfil-topo img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ffd700;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.perfil-topo img:hover {
+  transform: scale(1.1);
+}
     footer {
       background: #000;
       padding: 10px;
@@ -112,10 +132,15 @@
       <a href="#">Fechado temporariamente</a>
       <a href="login.html">Login</a>
       <a href="novidades.html">novidades!!</a>
+      <a href="perfil.html">perfil</a>
     </nav>
   </header>
 <h2 id="boasVindas" style="margin-bottom:20px;"></h2>
 
+<div class="perfil-topo">
+  <img id="fotoTopo" src="https://via.placeholder.com/60">
+</div>
+  
   <main class="container">
     <section class="countdown">
       <h2>⏳ Contagem regressiva para a Liga</h2>
@@ -171,6 +196,36 @@
       'Olá treinador! Faça login para aproveitar a liga.';
   }
 
+    const usuario = localStorage.getItem("logado");
+
+if (usuario) {
+  const foto = localStorage.getItem("foto_" + usuario);
+  if (foto) {
+    document.getElementById("fotoTopo").src = foto;
+  }
+
+  // clique leva ao perfil
+  document.getElementById("fotoTopo").onclick = () => {
+    window.location.href = "perfil.html";
+  };
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const usuario = localStorage.getItem("logado");
+  if (!usuario) return;
+
+  const foto = localStorage.getItem("foto_" + usuario);
+  if (foto) {
+    document.getElementById("fotoTopo").src = foto;
+  }
+
+  document.getElementById("fotoTopo").onclick = () => {
+    window.location.href = "perfil.html";
+  };
+
+});
+
 </script>
 
 
@@ -181,5 +236,6 @@
 
 </body>
 </html>
+
 
 
