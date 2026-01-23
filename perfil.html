@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu Perfil</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #0b0b0b, #111);
+  color: #fff;
+}
+
+.perfil {
+  max-width: 420px;
+  margin: 60px auto;
+  background: #000;
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(255,215,0,0.4);
+}
+
+.perfil img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ffd700;
+}
+
+.perfil h1 {
+  margin-top: 15px;
+  color: #ffd700;
+  font-size: 1.4rem;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 15px;
+  background: #ffd700;
+  color: #000;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+label:hover {
+  background: #ffea00;
+}
+
+.logout {
+  margin-top: 20px;
+  display: block;
+  color: #ff6666;
+  cursor: pointer;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="perfil">
+  <img id="fotoPerfil" src="https://via.placeholder.com/150">
+  <h1 id="nomeUsuario"></h1>
+
+  <label for="upload">Trocar foto</label>
+  <input type="file" id="upload" accept="image/*">
+
+  <span class="logout" onclick="sair()">Sair da conta</span>
+</div>
+
+<script>
+/* 🔐 PEGA O USUÁRIO LOGADO (CHAVE CORRETA) */
+const usuario = localStorage.getItem("logado");
+
+/* SE NÃO ESTIVER LOGADO */
+if (!usuario) {
+  alert("Você precisa estar logado para acessar o perfil.");
+  window.location.href = "login.html";
+}
+
+/* MOSTRA O NOME */
+document.getElementById("nomeUsuario").innerText =
+  "Olá " + usuario + ", bem-vindo de volta!";
+
+/* CARREGA FOTO SALVA */
+const fotoSalva = localStorage.getItem("foto_" + usuario);
+if (fotoSalva) {
+  document.getElementById("fotoPerfil").src = fotoSalva;
+}
+
+/* TROCAR FOTO */
+document.getElementById("upload").addEventListener("change", function () {
+  const file = this.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function () {
+    document.getElementById("fotoPerfil").src = reader.result;
+    localStorage.setItem("foto_" + usuario, reader.result);
+  };
+  reader.readAsDataURL(file);
+});
+
+/* LOGOUT */
+function sair() {
+  localStorage.removeItem("logado");
+  window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
