@@ -223,7 +223,28 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("fotoTopo").onclick = () => {
     window.location.href = "perfil.html";
   };
+  
+const usuario = localStorage.getItem("logado");
 
+const mareep = document.getElementById("mareep");
+
+if (mareep && usuario) {
+  mareep.addEventListener("click", () => {
+
+    let conquistas =
+      JSON.parse(localStorage.getItem("conquistas_" + usuario)) || {};
+
+    if (!conquistas.mareep) {
+      conquistas.mareep = true;
+      localStorage.setItem(
+        "conquistas_" + usuario,
+        JSON.stringify(conquistas)
+      );
+
+      alert("🏆 Conquista desbloqueada: Amigo do Mareep!");
+    }
+  });
+} 
 });
 
 </script>
@@ -236,6 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
 
 
